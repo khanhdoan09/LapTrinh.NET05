@@ -79,6 +79,12 @@ namespace WatchStore.Controllers.API
             IList<Product> products = db.Products.Where(p => p.Price >= price).ToList();
             return Ok(products);
         }
+        // tim kiem san pham 
+        public IHttpActionResult GetProductByName(string txtName)
+        {
+            IList<Product> products = db.Products.Where(p => p.Name.Contains(txtName)).ToList();
+            return Ok(products);
+        }
         
     }
 }

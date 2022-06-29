@@ -239,6 +239,30 @@ namespace WatchStore.Controllers
             }
             return View(products);
         }
+        // tim kiem san pham theo ten
+        public ActionResult Search(string txtName)
+        {
+            IEnumerable<Product> products = null;
+            ViewBag.textSearch = txtName;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44380/api/");
+                var rs = client.GetAsync("product?txtName=" + txtName);
+                rs.Wait();
+                var re = rs.Result;
+                if (re.IsSuccessStatusCode)
+                {
+                    var readRe = re.Content.ReadAsAsync<IList<Product>>();
+                    readRe.Wait();
+                    products = readRe.Result;
+                }
+                
+
+            }
+            
+            return View(products);
+        }
 
     }
 }

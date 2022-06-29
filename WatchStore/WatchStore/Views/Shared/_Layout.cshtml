@@ -25,14 +25,23 @@
                     </a>
                 </div>
                 <div class=" d-none d-xl-flex">
-                    <form action="" method="post">
+                    @using (Html.BeginForm("Search", "Product", FormMethod.Get))
+            {
+                    <div class="input-group mb-3">
+                        <input type="search" name="txtName" value="@ViewBag.textSearch" class="form-search" placeholder="Search...">
+                        <button class="btn btn-search" type="submit" id="button-addon2">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+            }
+                    @*<form action="" method="post">
                         <div class="input-group mb-3">
                             <input type="search" class="form-search" placeholder="Search...">
                             <button class="btn btn-search" type="submit" id="button-addon2">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </div>
-                    </form>
+                    </form>*@
                 </div>
                 <div class="pt-3">
                     <button class="btn-user user position-relative">
