@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WatchStore.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class ManageController : Controller
     {
         // GET: Admin/Home
         public ActionResult Index()
