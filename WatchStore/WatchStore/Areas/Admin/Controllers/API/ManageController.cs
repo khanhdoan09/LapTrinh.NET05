@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace WatchStore.Areas.Admin.Controllers.API
 {
-    public class ProductController : ApiController
+    public class ManageController : ApiController
     {
     }
 }
