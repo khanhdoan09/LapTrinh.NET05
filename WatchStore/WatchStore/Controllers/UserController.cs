@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using WatchStore.Models;
 
 namespace WatchStore.Controllers
 {
@@ -10,7 +12,7 @@ namespace WatchStore.Controllers
     {
         // GET: User
         public ActionResult Index()
-        {
+        {          
             return View();
         }
         public ActionResult Login(string email,string password)
@@ -18,7 +20,7 @@ namespace WatchStore.Controllers
             return View();
         }
         public ActionResult Register()
-        {
+        {    
             return View();
         }
     }

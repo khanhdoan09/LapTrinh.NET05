@@ -176,6 +176,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\API\ImageController.cs" />
     <Compile Include="Controllers\API\ProductController.cs" />
+    <Compile Include="Controllers\API\UserController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

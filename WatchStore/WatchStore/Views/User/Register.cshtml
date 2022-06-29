@@ -1,4 +1,4 @@
-﻿
+﻿@model WatchStore.Models.Customer
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,13 +18,14 @@
 <div class="container pt-5">
     <h1 class="title text-center pb-3">Register Account</h1>
     <div class="register">
+       
         <form action="" class="d-flex m-auto flex-column">
 
             <input type="text" placeholder="Enter your full name" required>
-            <!--            <span class="text-danger">Alert message</span>-->
+                        <span class="text-danger">Alert message</span>
 
             <input type="text" placeholder="Enter your email" required>
-            <!--            <span class="text-danger">Alert message</span>-->
+                        <span class="text-danger">Alert message</span>
 
             <input type="password" placeholder="Password" id="ipnPassword1" required>
             <div class="position-relative">
@@ -32,7 +33,7 @@
                     <span class="fas fa-eye"></span>
                 </button>
             </div>
-            <!--            <span class="text-danger">Alert message</span>-->
+                        <span class="text-danger">Alert message</span>
 
             <input type="password" placeholder="Confirm password" id="ipnPassword2" required>
             <div class="position-relative">
@@ -40,13 +41,13 @@
                     <span class="fas fa-eye"></span>
                 </button>
             </div>
-            <!--            <span class="text-danger">Alert message</span>-->
+                        <span class="text-danger">Alert message</span>
 
             <input type="text" placeholder="Enter your address" required>
-            <!--            <span class="text-danger">Alert message</span>-->
+                        <span class="text-danger">Alert message</span>
 
             <input type="text" placeholder="Enter your phone" required>
-            <!--            <span class="text-danger">Alert message</span>-->
+                        <span class="text-danger">Alert message</span>
 
             <div class="option d-flex justify-content-between">
                 <a href="~/User/Login">Login</a>

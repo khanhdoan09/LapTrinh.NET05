@@ -3,7 +3,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model IEnumerable<WatchStore.Models.Product>
+@*@model IEnumerable<WatchStore.Models.Product>*@
+@model PagedList.IPagedList<WatchStore.Models.Product>
+@using PagedList.Mvc;
 <div class="container-fluid bg-light breadcrumb-section">
     <div class="container pt-2">
         <div aria-label="breadcrumb ">
@@ -95,9 +97,10 @@
             <div class="row gy-5">
                 @if (Model.Count() == 0)
                 {
-                <h4>Không tìm thấy sản phẩm: 
-                    <span class="text-danger">@ViewBag.textSearch</span>
-                </h4>
+                    <h4>
+                        Không tìm thấy sản phẩm:
+                        <span class="text-danger">@ViewBag.textSearch</span>
+                    </h4>
                 }
 
                 @foreach (var item in Model)
@@ -130,30 +133,33 @@
                         </div>
                     </div>
                 }
+
             </div>
         </div>
     </div>
-</div>
+</div> 
 
 <div class="container pt-5 pb-5">
-    <div aria-label="Page navigation example">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    @*<div aria-label="Page navigation example">
 
         <ul class="pagination d-flex m-auto justify-content-center">
             <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+
         </ul>
-    </div>
+    </div>*@
 </div>
 
 

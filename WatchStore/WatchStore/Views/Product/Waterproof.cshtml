@@ -3,7 +3,9 @@
     ViewBag.Title = "Waterproof";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model IEnumerable<WatchStore.Models.Product>
+@*@model IEnumerable<WatchStore.Models.Product>*@
+@model PagedList.IPagedList<WatchStore.Models.Product>
+@using PagedList.Mvc;
 <div class="container-fluid bg-light breadcrumb-section">
     <div class="container pt-2">
         <div aria-label="breadcrumb ">
@@ -149,7 +151,9 @@
         </ul>
     </div>
 </div>
-
+<div>
+    
+</div>
 
 
 

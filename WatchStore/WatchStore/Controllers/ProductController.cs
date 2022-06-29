@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -240,15 +241,16 @@ namespace WatchStore.Controllers
             return View(products);
         }
         // tim kiem san pham theo ten
-        public ActionResult Search(string txtName)
+        public ActionResult Search(string txtName, int ? page, int pageSize =2 )
         {
             IEnumerable<Product> products = null;
             ViewBag.textSearch = txtName;
-
+            if (page == null) page = 1;
+            int pageNumber = page ?? 1;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44380/api/");
-                var rs = client.GetAsync("product?txtName=" + txtName);
+                var rs = client.GetAsync("product?txtName=" + txtName + "&page=" + page + "&pageSize=" + pageSize);
                 rs.Wait();
                 var re = rs.Result;
                 if (re.IsSuccessStatusCode)
@@ -256,12 +258,9 @@ namespace WatchStore.Controllers
                     var readRe = re.Content.ReadAsAsync<IList<Product>>();
                     readRe.Wait();
                     products = readRe.Result;
-                }
-                
-
+                }           
             }
-            
-            return View(products);
+            return View(products.ToPagedList(pageNumber, pageSize));
         }
 
     }

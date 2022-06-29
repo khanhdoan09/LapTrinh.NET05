@@ -80,9 +80,9 @@ namespace WatchStore.Controllers.API
             return Ok(products);
         }
         // tim kiem san pham 
-        public IHttpActionResult GetProductByName(string txtName)
+        public IHttpActionResult GetProductByName(string txtName, int page, int pageSize)
         {
-            IList<Product> products = db.Products.Where(p => p.Name.Contains(txtName)).ToList();
+            IEnumerable<Product> products = db.Products.Where(p => p.Name.Contains(txtName)).OrderByDescending(p => p.CreateDate).ToPagedList(page, pageSize);
             return Ok(products);
         }
         
