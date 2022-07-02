@@ -142,8 +142,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\API\ManageController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageAccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageBrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageOrderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
@@ -882,10 +884,17 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Content\admin\scss\style.css.map" />
     <Content Include="Content\admin\scss\style.scss" />
-    <Content Include="Areas\Admin\Views\Manage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Account\ForgotPassword.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageProduct\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageProduct\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageProduct\ViewP.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageAccount\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageProduct\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageOrder\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageBrand\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageOrder\ViewO.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -925,6 +934,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\API\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Content\admin\img\" />
