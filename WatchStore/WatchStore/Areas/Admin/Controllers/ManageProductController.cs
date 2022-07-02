@@ -11,17 +11,34 @@ namespace WatchStore.Areas.Admin.Controllers
     public class ManageProductController : Controller
     {
         // GET: Admin/Home
-        public ActionResult Index()
-
+        public ActionResult Index() 
         {
-            ViewBag.Title = "Product";
-            IEnumerable<Product> listP = listProduct();
-            IEnumerable<Brand> listB = listBrand();
-            IEnumerable<Customer> listC = listAccount();
-            IEnumerable<Order> listO = listOrder();
+            IEnumerable<Product> products = null;
 
-            SharedManage sm = new SharedManage(listP, listC, listB, listO);
-            return View(sm);
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44380/api/");
+                var rs = client.GetAsync("GetListProductAdmin");
+                rs.Wait();
+                var re = rs.Result;
+                if (re.IsSuccessStatusCode)
+                {
+                    var readRe = re.Content.ReadAsAsync<IList<Product>>();
+                    readRe.Wait();
+                    products = readRe.Result;
+                }
+
+            }
+            return View(products);
+
+            /*   ViewBag.Title = "Product";
+               IEnumerable<Product> listP = listProduct();
+               IEnumerable<Brand> listB = listBrand();
+               IEnumerable<Customer> listC = listAccount();
+               IEnumerable<Order> listO = listOrder();
+
+               SharedManage sm = new SharedManage(listP, listC, listB, listO);
+               return View(sm);*/
         }
         public ActionResult Add()
         {
@@ -31,15 +48,28 @@ namespace WatchStore.Areas.Admin.Controllers
         {
             return View();
         }
-        public ActionResult ViewP(string pid)
+        public ActionResult ViewP(String id)
         {
-            IEnumerable<Image> imgs = listI(pid);
-            Product p = pDetail(pid);
-            ShareViewProduct sv = new ShareViewProduct(p, imgs);
+            Product product = null;
 
-            return View(sv);
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44380/api/");
+                var rs = client.GetAsync("GetDetailProductAdmin?id=" + id);
+                rs.Wait();
+                var re = rs.Result;
+                if (re.IsSuccessStatusCode)
+                {
+                    var readRe = re.Content.ReadAsAsync<Product>();
+                    readRe.Wait();
+                    product = readRe.Result;
+                }
+
+            }
+            return View(product);
         }
-        public Product pDetail(string pid)
+
+/*        public Product pDetail(string pid)
         {
             Product pu = null;
 
@@ -58,30 +88,9 @@ namespace WatchStore.Areas.Admin.Controllers
 
             }
             return pu;
-        }
-        public IEnumerable<Image> listI(string iid)
-        {
-            ViewBag.Title = "Product";
-            IEnumerable<Image> imgs = null;
-
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://localhost:44380/api/");
-                var rs = client.GetAsync("manageproduct?iid=" + iid);
-                rs.Wait();
-                var re = rs.Result;
-                if (re.IsSuccessStatusCode)
-                {
-                    var readRe = re.Content.ReadAsAsync<IList<Image>>();
-                    readRe.Wait();
-                    imgs = readRe.Result;
-                }
-
-            }
-            return (imgs);
-        }
-
-
+        }*/
+     
+/*
         public IEnumerable<Customer> listAccount()
         {
             ViewBag.Title = "Product";
@@ -168,6 +177,6 @@ namespace WatchStore.Areas.Admin.Controllers
 
             }
             return orders;
-        }
+        }*/
     }
 }

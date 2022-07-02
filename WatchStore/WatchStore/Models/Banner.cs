@@ -14,7 +14,7 @@ namespace WatchStore.Models
     
     public partial class Banner
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string ImageUrl { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
     }

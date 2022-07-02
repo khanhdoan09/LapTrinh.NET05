@@ -22,7 +22,7 @@ namespace WatchStore.Models
     
         public string Id { get; set; }
         public string Status { get; set; }
-        public string Customer { get; set; }
+        public Nullable<int> Customer { get; set; }
         public Nullable<System.DateTime> OrderDate { get; set; }
         public Nullable<System.DateTime> OderDue { get; set; }
     

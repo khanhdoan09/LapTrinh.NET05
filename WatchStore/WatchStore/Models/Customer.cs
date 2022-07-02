@@ -20,7 +20,7 @@ namespace WatchStore.Models
             this.Orders = new HashSet<Order>();
         }
     
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Avatar { get; set; }
@@ -28,13 +28,8 @@ namespace WatchStore.Models
         public string Address { get; set; }
         public string FullName { get; set; }
         public string Gender { get; set; }
-        public Nullable<int> isAdmin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
-        public virtual Customer Customers1 { get; set; }
-        public virtual Customer Customer1 { get; set; }
-        public virtual Customer Customers11 { get; set; }
-        public virtual Customer Customer2 { get; set; }
     }
 }

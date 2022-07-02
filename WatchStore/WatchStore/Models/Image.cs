@@ -18,8 +18,6 @@ namespace WatchStore.Models
         public string Url { get; set; }
         public string Product { get; set; }
     
-        public virtual Image Images1 { get; set; }
-        public virtual Image Image1 { get; set; }
         public virtual Product Product1 { get; set; }
     }
 }

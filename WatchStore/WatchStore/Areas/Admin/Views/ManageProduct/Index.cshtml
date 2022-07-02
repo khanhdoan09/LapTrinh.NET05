@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-@model WatchStore.Models.SharedManage
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -94,30 +94,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model.listP)
-                                    {
 
+                                    @model IEnumerable<WatchStore.Models.Product>
+
+                                    @foreach (var Item in Model)
+                                    {
                                         <tr>
-                                            <td>@item.Id</td>
-                                            <td>@item.Name</td>
+                                            <td>@Item.Id</td>
+                                            <td>@Item.Name</td>
                                             <td class="d-none d-xl-block d-xxl-block">
-                                                <img src="~/Content/img/product/@item.Avatar"
+                                                <img src="/Content/img/product/@Item.Avatar"
                                                      class="img-thumbnail avatar-product"
                                                      alt="Hollywood Sign on The Hill" />
                                             </td>
-                                            <td>@item.CreateDate</td>
-                                            <td>$@item.Price</td>
+                                            <td>@Item.CreateDate</td>
+                                            <td>$@Item.Price</td>
                                             <td>
                                                 <button class="btns btns-add">
-                                                    <a href="~/ManageProduct/Add">
+                                                    <a href="./add.html ">
                                                         <i class="fa-solid fa-plus"></i>
                                                     </a>
                                                 </button>
                                                 <button class="btns btns-view">
-                                                    <a href="~/Admin/ManageProduct/ViewP?pid=@item.Id"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="/Admin/ManageProduct/ViewP?id=@Item.Id"><i class="fa-solid fa-eye"></i></a>
                                                 </button>
                                                 <button class="btns btns-edit">
-                                                    <a href="~/ManageProduct/Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="./edit.html"><i class="fa-solid fa-pen-to-square"></i></a>
                                                 </button>
                                                 <button class="btns btns-delete" data-bs-toggle="modal"
                                                         data-bs-target="#staticBackdrop4">
@@ -125,8 +127,8 @@
                                                 </button>
                                             </td>
                                         </tr>
-                                    }
 
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -145,38 +147,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach (var item in Model.listC)
-                                    {
-                                        <tr>
-                                            <td>@item.Id</td>
-                                            <td>@item.FullName</td>
-                                            <td>@item.Email</td>
-                                            <td>@item.Phone</td>
-                                            <td>$@item.isAdmin</td>
-                                            <td>
-                                                <button class="btns btns-add" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop5">
-                                                    <i class="fa-solid fa-plus"></i>
-                                                </button>
-                                                <button class="btns btns-view" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop6">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </button>
-                                                <button class="btns btns-edit" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop7">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
-                                                </button>
-                                                <button class="btns btns-delete" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop8">
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    }
-
-                                </tbody>
-
+                
                             </table>
                         </div>
 
@@ -192,24 +163,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach (var item in Model.listB)
-                                    {
-                                        <tr>
-                                            <td>@item.Id</td>
-                                            <td>@item.Name</td>
-                                            <td>
-                                                <button class="btns btns-add"><i class="fa-solid fa-plus"></i></button>
-                                                <button class="btns btns-view"><i class="fa-solid fa-eye"></i></button>
-                                                <button class="btns btns-edit"><i class="fa-solid fa-pen-to-square"></i></button>
-                                                <button class="btns btns-delete"><i class="fa-solid fa-xmark"></i></button>
-                                            </td>
-                                        </tr>
-
-                                    }
-
-                                </tbody>
-
+                     
                             </table>
                         </div>
 
@@ -227,35 +181,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model.listO)
-                                    {
-                                        <tr>
-                                            <td>@item.Id</td>
-                                            <td>@item.OrderDate</td>
-                                            <td>@item.OderDue</td>
-                                            <td>@item.Status</td>
-                                           
-                                            <td>
-                                                <button class="btns btns-add" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop9">
-                                                    <i class="fa-solid fa-plus"></i>
-                                                </button>
-                                                <button class="btns btns-view" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop10">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </button>
-                                                <button class="btns btns-edit" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop11">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
-                                                </button>
-                                                <button class="btns btns-delete" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop12">
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    }
-
                                 </tbody>
                             </table>
                         </div>

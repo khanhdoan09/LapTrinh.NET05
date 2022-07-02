@@ -146,6 +146,8 @@
     <Compile Include="Areas\Admin\Controllers\API\ManageAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\ManageOrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\ManageProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Product\GetDetailProductAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Product\GetListProductAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageBrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageOrderController.cs" />
@@ -206,6 +208,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DbWatchShop.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DbWatchShop.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbWatchShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DbWatchShop.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -880,13 +887,6 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Content\scss\style.css.map" />
     <Content Include="Content\scss\style.scss" />
-    <EntityDeploy Include="Models\DbWatchShop.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbWatchShop.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DbWatchShop.edmx.diagram">
-      <DependentUpon>DbWatchShop.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Content\admin\scss\style.css.map" />
     <Content Include="Content\admin\scss\style.scss" />
@@ -901,6 +901,13 @@
     <Content Include="Areas\Admin\Views\ManageOrder\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ManageBrand\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ManageOrder\ViewO.cshtml" />
+    <EntityDeploy Include="Models\DbWatchShop.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbWatchShop.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DbWatchShop.edmx.diagram">
+      <DependentUpon>DbWatchShop.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -941,6 +948,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\GetListProductAdmin\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Content\admin\img\" />
   </ItemGroup>
