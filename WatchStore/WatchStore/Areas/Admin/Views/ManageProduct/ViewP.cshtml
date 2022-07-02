@@ -1,8 +1,5 @@
 ﻿
-@{
-    Layout = null;
-}
-
+@model WatchStore.Models.ShareViewProduct
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,31 +28,38 @@
             </div>
             <div class="modal-body ">
                 <form>
-                    <!-- 2 column grid layout with text inputs for the first and last names -->
+                   
+
                     <div class="row mb-5">
                         <div class="col-2">
+
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Product ID" readonly />
+                                <label>Id</label>
+                                <input type="text" class="form-control" value="@Model.product.Id" readonly />
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Product Name" readonly />
+                                <label>Name</label>
+                                <input type="text" class="form-control" value="@Model.product.Name" readonly />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Price" readonly />
+                                <label>Price</label>
+                                <input type="text" class="form-control" value="@Model.product.Price" readonly />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Discount" readonly />
+                                <label>Discount</label>
+                                <input type="text" class="form-control" value="@Model.product.Discount" readonly />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Import" readonly />
+                                <label>Import</label>
+                                <input type="text" class="form-control" value="@Model.product.Import" readonly />
                             </div>
                         </div>
 
@@ -64,32 +68,38 @@
                     <div class="row mb-5">
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Gender" readonly />
+                                <label>Gender</label>
+                                <input type="text" class="form-control" value="@Model.product.Gender" readonly />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Brand" readonly />
+                                <label>Brand</label>
+                                <input type="text" class="form-control" value="@Model.product.Brand" readonly />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Origin" readonly />
+                                <label>Origin</label>
+                                <input type="text" class="form-control" value="@Model.product.Origin" readonly />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Warranty" readonly />
+                                <label>WarrantyPeriod</label>
+                                <input type="text" class="form-control" value="@Model.product.WarrantyPeriod" readonly />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Diameter" readonly />
+                                <label>Diameter</label>
+                                <input type="text" class="form-control" value="@Model.product.Diameter" readonly />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Material" readonly />
+                                <label>Material</label>
+                                <input type="text" class="form-control" value="@Model.product.Material" readonly />
                             </div>
                         </div>
 
@@ -97,69 +107,61 @@
                     <div class="row mb-5">
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Strap" readonly />
+                                <label>Strap</label>
+                                <input type="text" class="form-control" value="@Model.product.Strap" readonly />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Wire Width" readonly />
+                                <label>WireWidth</label>
+                                <input type="text" class="form-control" value="@Model.product.WireWidth" readonly />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Apparatus" readonly />
+                                <label>Apparatus</label>
+                                <input type="text" class="form-control" value="@Model.product.Apparatus" readonly />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Waterproof" readonly />
+                                <label>Waterproof</label>
+                                <input type="text" class="form-control" value="@Model.product.Waterproof" readonly />
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Date" readonly />
+                                <label>CreateDate</label>
+                                <input type="text" class="form-control" value="@Model.product.CreateDate" readonly />
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-5">
-                        <div class="col-3">
-                            <div class="form-outline">
-                                <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHdhdGNofGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-                                     class="avatar-product img-thumbnail"
-                                     alt="">
+                    <div class="row mb-5 d-flex m-auto">
+                        @foreach (var item in Model.listI)
+                        {
+                            <div class="col-3">
+                                <div class="form-outline">
+                                    <img src="~/Content/img/product/@item.Url"
+                                         class="avatar-product img-thumbnail"
+                                         alt="">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-outline">
-                                <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHdhdGNofGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-                                     class="avatar-product img-thumbnail"
-                                     alt="">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-outline">
-                                <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHdhdGNofGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-                                     class="avatar-product img-thumbnail"
-                                     alt="">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-outline">
-                                <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHdhdGNofGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-                                     class="avatar-product img-thumbnail"
-                                     alt="">
-                            </div>
-                        </div>
+                        }
+
+                      
                     </div>
                     <div class="form-outline mb-5">
-                        <textarea type="email" class="form-control" placeholder="Enter Description" rows="10"
-                                  readonly></textarea>
+                        <label>Description</label>
+                        <textarea type="email" class="form-control" rows="10"
+                                  readonly>@Model.product.Description</textarea>
                     </div>
+                    
+
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btns btns-close">
-                    <a href="./index.html">Close</a>
+                    <a href="~/Admin/ManageProduct">Close</a>
                 </button>
             </div>
         </div>
