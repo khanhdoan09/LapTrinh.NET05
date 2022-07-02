@@ -142,6 +142,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ManageBrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ManageAccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ManageOrderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ManageProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageBrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageOrderController.cs" />
@@ -221,8 +225,10 @@
       <DependentUpon>DbWatchShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SharedHome.cs" />
+    <Compile Include="Models\SharedManage.cs" />
     <Compile Include="Models\SharedProduct.cs" />
     <Compile Include="Models\SharedProductDetail.cs" />
+    <Compile Include="Models\ShareViewProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -934,7 +940,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\API\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Content\admin\img\" />
