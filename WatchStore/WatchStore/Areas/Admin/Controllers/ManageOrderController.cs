@@ -6,10 +6,14 @@ using System.Web.Mvc;
 
 namespace WatchStore.Areas.Admin.Controllers
 {
-    public class ManageController : Controller
+    public class ManageOrderController : Controller
     {
-        // GET: Admin/Home
+        // GET: Admin/ManageOrder
         public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult ViewO()
         {
             return View();
         }

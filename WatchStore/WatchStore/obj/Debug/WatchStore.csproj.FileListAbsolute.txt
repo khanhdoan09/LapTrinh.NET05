@@ -271,3 +271,4 @@ D:\NLU\Nam 3\.NET\Đồ Án Cuối Kỳ\LapTrinh.NET05\WatchStore\WatchStore\bin
 D:\NLU\Nam 3\.NET\Đồ Án Cuối Kỳ\LapTrinh.NET05\WatchStore\WatchStore\bin\System.Web.WebPages.Razor.xml
 D:\NLU\Nam 3\.NET\Đồ Án Cuối Kỳ\LapTrinh.NET05\WatchStore\WatchStore\bin\Antlr3.Runtime.pdb
 D:\NLU\Nam 3\.NET\Đồ Án Cuối Kỳ\LapTrinh.NET05\WatchStore\WatchStore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\NLU\Nam 3\.NET\Đồ Án Cuối Kỳ\LapTrinh.NET05\WatchStore\WatchStore\obj\Debug\WatchStore.csproj.CopyComplete

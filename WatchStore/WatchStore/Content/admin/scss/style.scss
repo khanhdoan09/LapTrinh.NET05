@@ -92,13 +92,33 @@ html, body {
   height: 35px;
   margin-right: 5px;
   margin-bottom: 5px;
+  & a{
+    display: block;
+    color: #fff !important;
 
+    text-decoration: none;
+  }
   &-add {
     background-color: #28a745;
     color: #fff;
     border: none;
     outline: none;
     border-radius: 5px;
+    & a{
+      display: block;
+      color: #fff !important;
+      padding: 5px;
+    }
+  }
+  &-close {
+    width: 100px !important;
+    background-color: #6c757d;
+    height: 37px;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+
   }
 
   &-edit {
