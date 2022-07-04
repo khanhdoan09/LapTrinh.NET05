@@ -1,7 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WatchStore.Models;
@@ -35,10 +40,87 @@ namespace WatchStore.Areas.Admin.Controllers
         {
             return View();
         }
-        public ActionResult Edit()
+        public ActionResult Edit(string Id)
         {
-            return View();
+            Product product = null;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44380/api/");
+                var rs = client.GetAsync("EditProductAdmin?id=" + Id);
+                rs.Wait();
+                var re = rs.Result;
+                if (re.IsSuccessStatusCode)
+                {
+                    var readRe = re.Content.ReadAsAsync<Product>();
+                    readRe.Wait();
+                    product = readRe.Result;
+                }
+
+            }
+            return View(product);
         }
+
+        [HttpPost]
+        public JsonResult SaveEditProduct(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                saveImage(product.Id.ToLower());
+
+
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44380/api/");
+                    var rs = client.PutAsJsonAsync<Product>("EditProductAdmin", product);
+                    rs.Wait();
+                    var re = rs.Result;
+                    if (re.IsSuccessStatusCode)
+                    {
+                        return Json(new { text = "edit successfully"}, JsonRequestBehavior.AllowGet);
+                    }
+
+                }
+            }
+
+            return Json(new { text = "edit error" }, JsonRequestBehavior.AllowGet);
+        }
+
+        private void saveImage(String Id)
+        {
+            var i1 = Request.Files["image_1"];
+            var i2 = Request.Files["image_2"];
+            var i3 = Request.Files["image_3"];
+            var i4 = Request.Files["image_4"];
+            var i5 = Request.Files["image_5"];
+            if (i1 != null)
+            {
+                var path1 = Server.MapPath("~/Content/img/product/" + Id + "_1.jpg");
+                i1.SaveAs(path1);
+            }
+            if (i2 != null)
+            {
+                var path2 = Server.MapPath("~/Content/img/product/" + Id + "_2.jpg");
+                i2.SaveAs(path2);
+            }
+            if (i3 != null)
+            {
+                var path3 = Server.MapPath("~/Content/img/product/" + Id + "_3.jpg");
+                i3.SaveAs(path3);
+            }
+            if (i4 != null)
+            {
+                var path4 = Server.MapPath("~/Content/img/product/" + Id + "_4.jpg");
+                i4.SaveAs(path4);
+            }
+            if (i5 != null)
+            {
+                var path5 = Server.MapPath("~/Content/img/product/" + Id + "_5.jpg");
+                i5.SaveAs(path5);
+            }
+        }
+      
         public ActionResult ViewP(String id)
         {
             Product product = null;

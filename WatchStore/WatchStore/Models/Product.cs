@@ -11,7 +11,9 @@ namespace WatchStore.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,21 +26,29 @@ namespace WatchStore.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Avatar { get; set; }
-        public Nullable<double> Price { get; set; }
+        [Range(0, double.MaxValue, ErrorMessage = "Price number is not valid")]
+        public double Price { get; set; }
+        [Range(0, 100, ErrorMessage = "Discount number is not valid")]
         public Nullable<double> Discount { get; set; }
+        [Range(0, int.MaxValue, ErrorMessage = "Import number is not valid")]
         public Nullable<double> Import { get; set; }
+        [Range(0, int.MaxValue, ErrorMessage = "Stock number is not valid")]
         public Nullable<double> Stock { get; set; }
         public string Brand { get; set; }
         public string Gender { get; set; }
         public string Origin { get; set; }
+        [DisplayName("Warranty Period")]
         public Nullable<double> WarrantyPeriod { get; set; }
+        [Range(0, double.MaxValue, ErrorMessage = "Diameter number is not valid")]
         public string Diameter { get; set; }
         public string Material { get; set; }
         public string Strap { get; set; }
+        [DisplayName("Wire Width")]
         public string WireWidth { get; set; }
         public string Apparatus { get; set; }
         public string Waterproof { get; set; }
         public string Description { get; set; }
+        [DisplayName("Create Date")]
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
     
