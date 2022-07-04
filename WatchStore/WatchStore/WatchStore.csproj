@@ -146,6 +146,7 @@
     <Compile Include="Areas\Admin\Controllers\API\ManageAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\ManageOrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\ManageProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Product\DeleteProductAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\Product\GetDetailProductAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\Product\GetListProductAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageAccountController.cs" />

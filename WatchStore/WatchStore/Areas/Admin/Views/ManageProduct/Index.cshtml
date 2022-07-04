@@ -96,10 +96,13 @@
                                 <tbody>
 
                                     @model IEnumerable<WatchStore.Models.Product>
-
+                                    @{
+                                        int CountRow = 0;
+                                    }
                                     @foreach (var Item in Model)
                                     {
-                                        <tr>
+                                        CountRow += 1;
+                                        <tr id="row-@CountRow">
                                             <td>@Item.Id</td>
                                             <td>@Item.Name</td>
                                             <td class="d-none d-xl-block d-xxl-block">
@@ -119,9 +122,9 @@
                                                     <a href="/Admin/ManageProduct/ViewP?id=@Item.Id"><i class="fa-solid fa-eye"></i></a>
                                                 </button>
                                                 <button class="btns btns-edit">
-                                                    <a href="./edit.html"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="/Admin/ManageProduct/Edit?id=@Item.Id"><i class="fa-solid fa-pen-to-square"></i></a>
                                                 </button>
-                                                <button class="btns btns-delete" data-bs-toggle="modal"
+                                                <button class="btns btns-delete remove-product" data-id="@Item.Id" data-idrow="row-@CountRow" data-bs-toggle="modal"
                                                         data-bs-target="#staticBackdrop4">
                                                     <i class="fa-solid fa-xmark"></i>
                                                 </button>
@@ -147,7 +150,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                
+
                             </table>
                         </div>
 
@@ -159,11 +162,11 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Brand Name</th>
-                                       
+
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                     
+
                             </table>
                         </div>
 
@@ -176,7 +179,7 @@
                                         <th>ID</th>
                                         <th>OrderDate</th>
                                         <th>OderDue</th>
-                                        <th>Status</th>                               
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -207,5 +210,32 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        // remove product
+        $(function () {
+            $(".remove-product").each(function () {
+                $(this).click(() => {
+                    let id = $(this).data("id")
+                    let idRow = $(this).data("idrow")
+                    let confirmDelete = confirm(`Are you sure wanna delete this ${id}`)
+                    if (confirmDelete) {
+                        $(`#` + idRow).remove()
+                        $.ajax({
+                            url: `/Admin/ManageProduct/DeleteProduct?id=${id}`,
+                            type: "DELETE",
+                            async: false,
+                            success: function (data) {
+                                alert(data.text)
+                                $(`#` + idRow).remove()
+                            },
+                            error: function (errormessage) {
+                                alert("error");
+                            }
+                        })
+                    }
+                });
+            });
+        })
+    </script>
 </body>
 </html>

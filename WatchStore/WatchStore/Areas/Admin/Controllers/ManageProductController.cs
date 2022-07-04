@@ -30,15 +30,6 @@ namespace WatchStore.Areas.Admin.Controllers
 
             }
             return View(products);
-
-            /*   ViewBag.Title = "Product";
-               IEnumerable<Product> listP = listProduct();
-               IEnumerable<Brand> listB = listBrand();
-               IEnumerable<Customer> listC = listAccount();
-               IEnumerable<Order> listO = listOrder();
-
-               SharedManage sm = new SharedManage(listP, listC, listB, listO);
-               return View(sm);*/
         }
         public ActionResult Add()
         {
@@ -69,114 +60,113 @@ namespace WatchStore.Areas.Admin.Controllers
             return View(product);
         }
 
-/*        public Product pDetail(string pid)
+        public JsonResult DeleteProduct(String Id)
         {
-            Product pu = null;
+            Product product = null;
 
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44380/api/");
-                var rs = client.GetAsync("manageproduct?pid=" + pid);
-                rs.Wait();
-                var re = rs.Result;
-                if (re.IsSuccessStatusCode)
+                var deleteTask = client.DeleteAsync("DeleteProductAdmin?id=" + Id);
+                deleteTask.Wait();
+                var result = deleteTask.Result;
+                if (result.IsSuccessStatusCode)
                 {
-                    var readRe = re.Content.ReadAsAsync<Product>();
-                    readRe.Wait();
-                    pu = readRe.Result;
+                    return Json(new { text = "remove successfully" }, JsonRequestBehavior.AllowGet);
                 }
 
             }
-            return pu;
-        }*/
-     
-/*
-        public IEnumerable<Customer> listAccount()
-        {
-            ViewBag.Title = "Product";
-            IEnumerable<Customer> customers = null;
-
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://localhost:44380/api/");
-                var rs = client.GetAsync("manageaccount");
-                rs.Wait();
-                var re = rs.Result;
-                if (re.IsSuccessStatusCode)
-                {
-                    var readRe = re.Content.ReadAsAsync<IList<Customer>>();
-                    readRe.Wait();
-                    customers = readRe.Result;
-                }
-
-            }
-            return customers;
-        }
-        public IEnumerable<Brand> listBrand()
-        {
-            ViewBag.Title = "Product";
-            IEnumerable<Brand> brands = null;
-
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://localhost:44380/api/");
-                var rs = client.GetAsync("managebrand");
-                rs.Wait();
-                var re = rs.Result;
-                if (re.IsSuccessStatusCode)
-                {
-                    var readRe = re.Content.ReadAsAsync<IList<Brand>>();
-                    readRe.Wait();
-                    brands = readRe.Result;
-                }
-
-            }
-            return brands;
-        }
-        public IEnumerable<Product> listProduct()
-
-        {
-            ViewBag.Title = "Product";
-            IEnumerable<Product> products = null;
-
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://localhost:44380/api/");
-                var rs = client.GetAsync("manageproduct");
-                rs.Wait();
-                var re = rs.Result;
-                if (re.IsSuccessStatusCode)
-                {
-                    var readRe = re.Content.ReadAsAsync<IList<Product>>();
-                    readRe.Wait();
-                    products = readRe.Result;
-                }
-
-            }
-            return products;
+            return Json(new { text = "remove fail" }, JsonRequestBehavior.AllowGet);
         }
 
-        public IEnumerable<Order> listOrder()
 
-        {
-            ViewBag.Title = "Product";
-            IEnumerable<Order> orders = null;
-
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://localhost:44380/api/");
-                var rs = client.GetAsync("manageorder");
-                rs.Wait();
-                var re = rs.Result;
-                if (re.IsSuccessStatusCode)
+        /*
+                public IEnumerable<Customer> listAccount()
                 {
-                    var readRe = re.Content.ReadAsAsync<IList<Order>>();
-                    readRe.Wait();
-                    orders = readRe.Result;
+                    ViewBag.Title = "Product";
+                    IEnumerable<Customer> customers = null;
+
+                    using (var client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri("https://localhost:44380/api/");
+                        var rs = client.GetAsync("manageaccount");
+                        rs.Wait();
+                        var re = rs.Result;
+                        if (re.IsSuccessStatusCode)
+                        {
+                            var readRe = re.Content.ReadAsAsync<IList<Customer>>();
+                            readRe.Wait();
+                            customers = readRe.Result;
+                        }
+
+                    }
+                    return customers;
+                }
+                public IEnumerable<Brand> listBrand()
+                {
+                    ViewBag.Title = "Product";
+                    IEnumerable<Brand> brands = null;
+
+                    using (var client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri("https://localhost:44380/api/");
+                        var rs = client.GetAsync("managebrand");
+                        rs.Wait();
+                        var re = rs.Result;
+                        if (re.IsSuccessStatusCode)
+                        {
+                            var readRe = re.Content.ReadAsAsync<IList<Brand>>();
+                            readRe.Wait();
+                            brands = readRe.Result;
+                        }
+
+                    }
+                    return brands;
+                }
+                public IEnumerable<Product> listProduct()
+
+                {
+                    ViewBag.Title = "Product";
+                    IEnumerable<Product> products = null;
+
+                    using (var client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri("https://localhost:44380/api/");
+                        var rs = client.GetAsync("manageproduct");
+                        rs.Wait();
+                        var re = rs.Result;
+                        if (re.IsSuccessStatusCode)
+                        {
+                            var readRe = re.Content.ReadAsAsync<IList<Product>>();
+                            readRe.Wait();
+                            products = readRe.Result;
+                        }
+
+                    }
+                    return products;
                 }
 
-            }
-            return orders;
-        }*/
+                public IEnumerable<Order> listOrder()
+
+                {
+                    ViewBag.Title = "Product";
+                    IEnumerable<Order> orders = null;
+
+                    using (var client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri("https://localhost:44380/api/");
+                        var rs = client.GetAsync("manageorder");
+                        rs.Wait();
+                        var re = rs.Result;
+                        if (re.IsSuccessStatusCode)
+                        {
+                            var readRe = re.Content.ReadAsAsync<IList<Order>>();
+                            readRe.Wait();
+                            orders = readRe.Result;
+                        }
+
+                    }
+                    return orders;
+                }*/
     }
 }
