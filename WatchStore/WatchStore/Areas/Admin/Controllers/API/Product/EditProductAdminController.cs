@@ -19,9 +19,9 @@ namespace WatchStore.Areas.Admin.Controllers.API.Product
      
 
         [System.Web.Http.HttpGet]
-        public IHttpActionResult GetEditProduct(String id)
+        public IHttpActionResult GetEditProduct(int id)
         {
-            Models.Product Product = db.Products.Where(p => p.Id.Equals(id)).FirstOrDefault();
+            Models.Product Product = db.Products.Where(p => p.Id == id).FirstOrDefault();
             return Ok(Product);
         }
 

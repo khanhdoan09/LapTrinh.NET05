@@ -15,7 +15,7 @@ namespace WatchStore.Models
     public partial class OrderDetail
     {
         public string Id { get; set; }
-        public string Product { get; set; }
+        public Nullable<int> Product { get; set; }
         public Nullable<int> Quantity { get; set; }
         public string OrderId { get; set; }
     

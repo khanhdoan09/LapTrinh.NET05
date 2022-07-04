@@ -13,18 +13,17 @@ namespace WatchStore.Areas.Admin.Controllers.API.Product
         DbWatchShopEntities db = new DbWatchShopEntities();
 
         [HttpDelete]
-        public IHttpActionResult DeleteProduct(String Id)
+        public IHttpActionResult DeleteProduct(int Id)
         {
             Models.Product productSelected = db.Products.SingleOrDefault(p => p.Id == Id);
-            Image imageSelected = db.Images.FirstOrDefault(i => i.Product == Id);
 
-            if (productSelected != null && imageSelected != null)
+            if (productSelected != null)
             {
                 db.Products.Remove(productSelected);
-                /* bug là do chưa set restrict trong csdl*/
+                /* bug là do chưa set constraint trong csdl*/
                 db.SaveChanges();
             }
-            return Ok();
+            return Ok("delete successfully");
         }
     }
 }

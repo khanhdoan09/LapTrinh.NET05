@@ -46,16 +46,16 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Url" Type="nvarchar" MaxLength="255" />
-          <Property Name="Product" Type="varchar" MaxLength="10" />
+          <Property Name="Product" Type="int" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Product" Type="varchar" MaxLength="10" />
+          <Property Name="Product" Type="int" />
           <Property Name="Quantity" Type="int" />
           <Property Name="OrderId" Type="varchar" MaxLength="10" />
         </EntityType>
@@ -73,7 +73,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="Avatar" Type="nvarchar" MaxLength="255" />
           <Property Name="Price" Type="float" />
@@ -131,7 +131,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_oder_detail_product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -143,7 +145,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -232,9 +236,9 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Url" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Product" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Product" Type="Int32" />
           <NavigationProperty Name="Product1" Relationship="Self.fk_product" FromRole="Image" ToRole="Product" />
         </EntityType>
         <EntityType Name="OrderDetail">
@@ -242,7 +246,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Product" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Product" Type="Int32" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="OrderId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK__OrderDeta__Order__33D4B598" FromRole="OrderDetail" ToRole="Orders" />
@@ -264,7 +268,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Avatar" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Double" />
@@ -313,7 +317,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -337,7 +343,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_oder_detail_product">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">

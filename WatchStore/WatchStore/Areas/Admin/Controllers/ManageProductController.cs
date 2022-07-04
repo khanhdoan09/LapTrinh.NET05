@@ -40,6 +40,31 @@ namespace WatchStore.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult SaveAddProduct(Product product)
+        {
+            int NewId = 0;
+            if (ModelState.IsValid)
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44380/api/");
+                    var rs = client.PutAsJsonAsync<Product>("AddProductAdmin", product);
+                    rs.Wait();
+                    var re = rs.Result;
+                    if (re.IsSuccessStatusCode)
+                    {
+                        var readRe = re.Content.ReadAsAsync<int>();
+                        readRe.Wait();
+                        NewId = readRe.Result;
+                    }
+
+                }
+            }
+            return RedirectToAction("Edit", "ManageProduct", new { area = "Admin", id=NewId });
+        }
+
         public ActionResult Edit(string Id)
         {
             Product product = null;
@@ -66,7 +91,7 @@ namespace WatchStore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                saveImage(product.Id.ToLower());
+                saveImage(product.Id);
 
 
 
@@ -87,7 +112,7 @@ namespace WatchStore.Areas.Admin.Controllers
             return Json(new { text = "edit error" }, JsonRequestBehavior.AllowGet);
         }
 
-        private void saveImage(String Id)
+        private void saveImage(int Id)
         {
             var i1 = Request.Files["image_1"];
             var i2 = Request.Files["image_2"];
@@ -154,7 +179,10 @@ namespace WatchStore.Areas.Admin.Controllers
                 var result = deleteTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    return Json(new { text = "remove successfully" }, JsonRequestBehavior.AllowGet);
+                    var readRe = result.Content.ReadAsAsync<string>();
+                    readRe.Wait();
+                    string message = readRe.Result;
+                    return Json(new { text = message }, JsonRequestBehavior.AllowGet);
                 }
 
             }

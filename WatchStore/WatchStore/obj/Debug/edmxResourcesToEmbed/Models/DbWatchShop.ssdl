@@ -41,16 +41,16 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Url" Type="nvarchar" MaxLength="255" />
-    <Property Name="Product" Type="varchar" MaxLength="10" />
+    <Property Name="Product" Type="int" />
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="Product" Type="varchar" MaxLength="10" />
+    <Property Name="Product" Type="int" />
     <Property Name="Quantity" Type="int" />
     <Property Name="OrderId" Type="varchar" MaxLength="10" />
   </EntityType>
@@ -68,7 +68,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="255" />
     <Property Name="Avatar" Type="nvarchar" MaxLength="255" />
     <Property Name="Price" Type="float" />
@@ -126,7 +126,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_oder_detail_product">
-    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Product">
@@ -138,7 +140,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_product">
-    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Image" Type="Self.Image" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Product">

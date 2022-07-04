@@ -11,9 +11,9 @@ namespace WatchStore.Areas.Admin.Controllers.API.Product
     public class GetDetailProductAdminController : ApiController
     {
         DbWatchShopEntities db = new DbWatchShopEntities();
-        public IHttpActionResult GetListProduct(String id)
+        public IHttpActionResult GetListProduct(int id)
         {
-            Models.Product product = db.Products.Where(p => p.Id.Equals(id)).FirstOrDefault();
+            Models.Product product = db.Products.Where(p => p.Id == id).FirstOrDefault();
             return Ok(product);
         }
     }
