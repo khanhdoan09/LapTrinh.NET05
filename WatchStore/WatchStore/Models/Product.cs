@@ -23,7 +23,7 @@ namespace WatchStore.Models
             this.Images = new HashSet<Image>();
             this.OrderDetails = new HashSet<OrderDetail>();
         }
-    
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string Avatar { get; set; }

@@ -86,7 +86,8 @@
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Brand" />
+                                @Html.TextBoxFor(model => model.Brand, new { @required = true, @class = "form-control", @placeholder = "Enter Brand" })
+                                @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="col-2">

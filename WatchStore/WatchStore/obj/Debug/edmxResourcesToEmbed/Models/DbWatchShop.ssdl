@@ -23,6 +23,7 @@
     <Property Name="Name" Type="nvarchar" MaxLength="255" />
     <Property Name="Email" Type="nvarchar" MaxLength="255" />
     <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="CustomerId" Type="int" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -47,18 +48,18 @@
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="OrderId" />
     </Key>
-    <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="Product" Type="int" />
+    <Property Name="Product" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="int" />
-    <Property Name="OrderId" Type="varchar" MaxLength="10" />
+    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Status" Type="nvarchar" MaxLength="255" />
     <Property Name="Customer" Type="int" />
     <Property Name="OrderDate" Type="datetime" />
@@ -89,8 +90,22 @@
     <Property Name="CreateDate" Type="datetime" />
     <Property Name="UpdateDate" Type="datetime" />
   </EntityType>
-  <Association Name="FK__OrderDeta__Order__33D4B598">
-    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+  <Association Name="FK__Contact__Custome__0E6E26BF">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__09A971A2">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
     <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Orders">
@@ -101,20 +116,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_brand">
-    <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
-    <End Role="Product" Type="Self.Product" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Brand">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="Brand" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_customer">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Customer">
@@ -126,7 +131,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_oder_detail_product">
-    <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
@@ -162,13 +167,13 @@
     <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__OrderDeta__Order__33D4B598" Association="Self.FK__OrderDeta__Order__33D4B598">
+    <AssociationSet Name="FK__Contact__Custome__0E6E26BF" Association="Self.FK__Contact__Custome__0E6E26BF">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Contact" EntitySet="Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__09A971A2" Association="Self.FK__OrderDeta__Order__09A971A2">
       <End Role="Orders" EntitySet="Orders" />
       <End Role="OrderDetail" EntitySet="OrderDetail" />
-    </AssociationSet>
-    <AssociationSet Name="fk_brand" Association="Self.fk_brand">
-      <End Role="Brand" EntitySet="Brand" />
-      <End Role="Product" EntitySet="Product" />
     </AssociationSet>
     <AssociationSet Name="fk_customer" Association="Self.fk_customer">
       <End Role="Customer" EntitySet="Customer" />

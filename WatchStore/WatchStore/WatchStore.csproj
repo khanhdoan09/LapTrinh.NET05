@@ -196,8 +196,9 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\API\ManageBrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\ManageAccountController.cs" />
-    <Compile Include="Areas\Admin\Controllers\API\ManageOrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\ManageProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Order\GetOrderAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Order\GetOrderDetailAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\Product\AddProductAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\Product\DeleteProductAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\Product\EditProductAdminController.cs" />

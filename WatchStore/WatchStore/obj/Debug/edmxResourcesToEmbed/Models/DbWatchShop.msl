@@ -25,6 +25,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -54,7 +55,6 @@
     <EntitySetMapping Name="OrderDetails">
       <EntityTypeMapping TypeName="watch_shopModel.OrderDetail">
         <MappingFragment StoreEntitySet="OrderDetail">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Product" ColumnName="Product" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
