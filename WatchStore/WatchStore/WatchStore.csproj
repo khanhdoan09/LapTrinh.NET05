@@ -194,6 +194,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Customer\GetCustomerInAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\ManageBrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\ManageAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\ManageProductController.cs" />

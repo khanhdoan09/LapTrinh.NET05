@@ -6,14 +6,14 @@ using System.Net.Http;
 using System.Web.Http;
 using WatchStore.Models;
 
-namespace WatchStore.Areas.Admin.Controllers.API
+namespace WatchStore.Areas.Admin.Controllers.API.Customer
 {
-    public class ManageAccountController : ApiController
+    public class GetCustomerInAdminController : ApiController
     {
         DbWatchShopEntities db = new DbWatchShopEntities();
-        public IHttpActionResult GetAccount()
+        public IHttpActionResult GetListCustomer()
         {
-            IList<Models.Customer> customers = db.Customers.OrderByDescending(c => c.Id).ToList();
+            IList<Models.Customer> customers = db.Customers.ToList();
             return Ok(customers);
         }
     }
