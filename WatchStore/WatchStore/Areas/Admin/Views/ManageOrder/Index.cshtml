@@ -52,7 +52,7 @@
                     <div class="nav flex-column nav-pills nav-pills-custom" id="v-pills-tab" role="tablist"
                          aria-orientation="vertical">
                         <a class="nav-link mb-3 p-3 shadow active" id="v-pills-product-tab" data-toggle="pill"
-                           href="#v-pills-product" role="tab" aria-controls="v-pills-product" aria-selected="true">
+                           href="#v-pills-product" role="tab" aria-controls="v-pills-product" aria-selected="false">
                             <i class="fa-solid fa-box-archive"></i>
                             <span class="font-weight-bold small text-uppercase fw-bold">My Product</span>
                         </a>
@@ -70,7 +70,7 @@
                         </a>
 
                         <a class="nav-link mb-3 p-3 shadow" id="v-pills-settings-tab" data-toggle="pill"
-                           href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                           href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="true">
                             <i class="fa-solid fa-boxes-packing"></i>
                             <span class="font-weight-bold small text-uppercase fw-bold">My Order</span>
                         </a>
@@ -87,165 +87,35 @@
                             <h4 class="font-italic mb-4">
                                 My Product
                             </h4>
-                            <table id="dataproduct" class="table table-striped" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Product Name</th>
-                                        <th class="d-none d-xl-block d-xxl-block">Image</th>
-                                        <th>Created Date</th>
-                                        <th>Price</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td class="d-none d-xl-block d-xxl-block">
-                                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
-                                                 class="img-thumbnail avatar-product"
-                                                 alt="Hollywood Sign on The Hill" />
-                                        </td>
-                                        <td> 2011-04-25</td>
-                                        <td>$320,800</td>
-                                        <td>
-                                            <button class="btns btns-add">
-                                                <a href="./add.html ">
-                                                    <i class="fa-solid fa-plus"></i>
-                                                </a>
-                                            </button>
-                                            <button class="btns btns-view">
-                                                <a href="./view.html"><i class="fa-solid fa-eye"></i></a>
-                                            </button>
-                                            <button class="btns btns-edit">
-                                                <a href="./edit.html"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            </button>
-                                            <button class="btns btns-delete" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop4">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-customer" role="tabpanel"
-                             aria-labelledby="v-pills-customer-tab">
-                            <h4 class="font-italic mb-4">Customer</h4>
-                            <table id="datacustomer" class="table table-striped" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Full Name</th>
-                                        <th>Email</th>
-                                        <th>Phone Number</th>
-                                        <th>Created Date</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>2011-04-25</td>
-                                        <td>$320,800</td>
-                                        <td>
-                                            <button class="btns btns-add" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop5">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </button>
-                                            <button class="btns btns-view" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop6">
-                                                <i class="fa-solid fa-eye"></i>
-                                            </button>
-                                            <button class="btns btns-edit" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop7">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </button>
-                                            <button class="btns btns-delete" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop8">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-
-                            </table>
-                        </div>
-
-                        <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-brand" role="tabpanel"
-                             aria-labelledby="v-pills-brand-tab">
-                            <h4 class="font-italic mb-4">Brand</h4>
-                            <table id="databrand" class="table table-striped" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Brand Name</th>
-                                        <th>Created Date</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>2011-04-25</td>
-                                        <td>
-                                            <button class="btns btns-add"><i class="fa-solid fa-plus"></i></button>
-                                            <button class="btns btns-view"><i class="fa-solid fa-eye"></i></button>
-                                            <button class="btns btns-edit"><i class="fa-solid fa-pen-to-square"></i></button>
-                                            <button class="btns btns-delete"><i class="fa-solid fa-xmark"></i></button>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-
-                            </table>
-                        </div>
-
-                        <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-settings" role="tabpanel"
-                             aria-labelledby="v-pills-settings-tab">
-                            <h4 class="font-italic mb-4">My Order</h4>
                             <table id="dataorder" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Customer ID</th>
-                                        <th>Product ID</th>
+                                        <th>ID Order</th>
+                                        <th>ID Customer</th>
+                                        <th>Status</th>
                                         <th>Order Date</th>
-                                        <th>Total Price</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>2011-04-25</td>
-                                        <td>$320,800</td>
-                                        <td>
-                                            <button class="btns btns-add" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop9">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </button>
-                                            <button class="btns btns-view" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop10">
-                                                <i class="fa-solid fa-eye"></i>
-                                            </button>
-                                            <button class="btns btns-edit" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop11">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </button>
-                                            <button class="btns btns-delete" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop12">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    @model IEnumerable<WatchStore.Models.Order>
+
+                                    @foreach (var Item in Model)
+                                    {
+                                        <tr>
+                                            <td>@Item.Id</td>
+                                            <td>@Item.Customer</td>
+                                            <td>@Item.Status</td>
+                                            <td>@Item.OrderDate</td>
+                                            <td>
+                                                <button class="btns btns-view" data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdrop10">
+                                                    <a href="/Admin/ManageOrder/ViewO?id=@Item.Id"><i class="fa-solid fa-eye"></i></a>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -272,5 +142,32 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        // remove product
+        $(function () {
+            $(".remove-product").each(function () {
+                $(this).click(() => {
+                    let id = $(this).data("id")
+                    let idRow = $(this).data("idrow")
+                    let confirmDelete = confirm(`Are you sure wanna delete this ${id}`)
+                    if (confirmDelete) {
+                        $(`#` + idRow).remove()
+                        $.ajax({
+                            url: `/Admin/ManageProduct/DeleteProduct?id=${id}`,
+                            type: "DELETE",
+                            async: false,
+                            success: function (data) {
+                                alert(data.text)
+                                $(`#` + idRow).remove()
+                            },
+                            error: function (errormessage) {
+                                alert("error");
+                            }
+                        })
+                    }
+                });
+            });
+        })
+    </script>
 </body>
 </html>

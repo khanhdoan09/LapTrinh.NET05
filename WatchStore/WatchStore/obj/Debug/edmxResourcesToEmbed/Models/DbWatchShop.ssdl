@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="DbWatchShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Banners">
+<Schema Namespace="watch_shopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Banner">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="ImageUrl" Type="nchar" MaxLength="50" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="255" />
     <Property Name="CreateDate" Type="datetime" />
   </EntityType>
-  <EntityType Name="Brands">
+  <EntityType Name="Brand">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="255" />
   </EntityType>
-  <EntityType Name="Contacts">
+  <EntityType Name="Contact">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -24,59 +24,59 @@
     <Property Name="Email" Type="nvarchar" MaxLength="255" />
     <Property Name="Message" Type="nvarchar(max)" />
   </EntityType>
-  <EntityType Name="Customers">
+  <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="255" />
     <Property Name="Password" Type="nvarchar" MaxLength="255" />
     <Property Name="Avatar" Type="nvarchar" MaxLength="255" />
     <Property Name="Phone" Type="nvarchar" MaxLength="15" />
     <Property Name="Address" Type="nvarchar" MaxLength="255" />
-    <Property Name="FullName" Type="nchar" MaxLength="255" />
-    <Property Name="Gender" Type="nchar" MaxLength="10" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="20" />
     <Property Name="isAdmin" Type="int" />
   </EntityType>
-  <EntityType Name="Images">
+  <EntityType Name="Image">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Url" Type="nvarchar" MaxLength="255" />
-    <Property Name="Product" Type="varchar" MaxLength="255" />
+    <Property Name="Product" Type="int" />
   </EntityType>
-  <EntityType Name="OrderDetails">
+  <EntityType Name="OrderDetail">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="OrderId" />
     </Key>
-    <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="Product" Type="varchar" MaxLength="255" />
+    <Property Name="Product" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="int" />
-    <Property Name="OrderId" Type="varchar" MaxLength="10" />
+    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Status" Type="nvarchar" MaxLength="255" />
-    <Property Name="Customer" Type="varchar" MaxLength="255" />
+    <Property Name="Customer" Type="int" />
     <Property Name="OrderDate" Type="datetime" />
     <Property Name="OderDue" Type="datetime" />
   </EntityType>
-  <EntityType Name="Products">
+  <EntityType Name="Product">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="255" />
     <Property Name="Avatar" Type="nvarchar" MaxLength="255" />
     <Property Name="Price" Type="float" />
     <Property Name="Discount" Type="float" />
     <Property Name="Import" Type="float" />
     <Property Name="Stock" Type="float" />
-    <Property Name="Brand" Type="varchar" MaxLength="255" />
+    <Property Name="Brand" Type="int" />
     <Property Name="Gender" Type="nvarchar" MaxLength="255" />
     <Property Name="Origin" Type="nvarchar" MaxLength="255" />
     <Property Name="WarrantyPeriod" Type="float" />
@@ -90,37 +90,25 @@
     <Property Name="CreateDate" Type="datetime" />
     <Property Name="UpdateDate" Type="datetime" />
   </EntityType>
-  <Association Name="FK__OrderDeta__Order__0E6E26BF">
-    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
-    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+  <Association Name="FK__OrderDeta__Order__09A971A2">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Orders">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="OrderDetails">
+      <Dependent Role="OrderDetail">
         <PropertyRef Name="OrderId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_brand">
-    <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
-    <End Role="Products" Type="Self.Products" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Brands">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Products">
-        <PropertyRef Name="Brand" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_customer">
-    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Customers">
+      <Principal Role="Customer">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Orders">
@@ -128,110 +116,58 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Customers_Customers">
-    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
-    <End Role="Customers1" Type="Self.Customers" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Customers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Customers1">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Customers_Customers1">
-    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
-    <End Role="Customers1" Type="Self.Customers" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Customers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Customers1">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Images_Images">
-    <End Role="Images" Type="Self.Images" Multiplicity="1" />
-    <End Role="Images1" Type="Self.Images" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Images">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Images1">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_oder_detail_product">
-    <End Role="Products" Type="Self.Products" Multiplicity="0..1">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Products">
+      <Principal Role="Product">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="OrderDetails">
+      <Dependent Role="OrderDetail">
         <PropertyRef Name="Product" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_product">
-    <End Role="Products" Type="Self.Products" Multiplicity="0..1">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="Images" Type="Self.Images" Multiplicity="*" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Products">
+      <Principal Role="Product">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Images">
+      <Dependent Role="Image">
         <PropertyRef Name="Product" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="DbWatchShopModelStoreContainer">
-    <EntitySet Name="Banners" EntityType="Self.Banners" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+  <EntityContainer Name="watch_shopModelStoreContainer">
+    <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__OrderDeta__Order__0E6E26BF" Association="Self.FK__OrderDeta__Order__0E6E26BF">
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__OrderDeta__Order__09A971A2" Association="Self.FK__OrderDeta__Order__09A971A2">
       <End Role="Orders" EntitySet="Orders" />
-      <End Role="OrderDetails" EntitySet="OrderDetails" />
-    </AssociationSet>
-    <AssociationSet Name="fk_brand" Association="Self.fk_brand">
-      <End Role="Brands" EntitySet="Brands" />
-      <End Role="Products" EntitySet="Products" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
     </AssociationSet>
     <AssociationSet Name="fk_customer" Association="Self.fk_customer">
-      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Customer" EntitySet="Customer" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_Customers_Customers" Association="Self.FK_Customers_Customers">
-      <End Role="Customers" EntitySet="Customers" />
-      <End Role="Customers1" EntitySet="Customers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Customers_Customers1" Association="Self.FK_Customers_Customers1">
-      <End Role="Customers" EntitySet="Customers" />
-      <End Role="Customers1" EntitySet="Customers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Images_Images" Association="Self.FK_Images_Images">
-      <End Role="Images" EntitySet="Images" />
-      <End Role="Images1" EntitySet="Images" />
-    </AssociationSet>
     <AssociationSet Name="fk_oder_detail_product" Association="Self.fk_oder_detail_product">
-      <End Role="Products" EntitySet="Products" />
-      <End Role="OrderDetails" EntitySet="OrderDetails" />
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
     </AssociationSet>
     <AssociationSet Name="fk_product" Association="Self.fk_product">
-      <End Role="Products" EntitySet="Products" />
-      <End Role="Images" EntitySet="Images" />
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Image" EntitySet="Image" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

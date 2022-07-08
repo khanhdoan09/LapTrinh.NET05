@@ -10,7 +10,7 @@ namespace WatchStore.Areas.Admin.Controllers.API
 {
     public class ManageProductController : ApiController
     {
-        DbWatchShopEntities db = new DbWatchShopEntities();
+   /*     DbWatchShopEntities db = new DbWatchShopEntities();
         public IHttpActionResult GetProduct()
         {
             IList<Product> products = db.Products.OrderByDescending(p => p.CreateDate).ToList();
@@ -25,6 +25,6 @@ namespace WatchStore.Areas.Admin.Controllers.API
         {
             IList<Image> images = db.Images.Where(p => p.Product.Equals(iid)).ToList();
             return Ok(images);
-        }
+        }*/
     }
 }

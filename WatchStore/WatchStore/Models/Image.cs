@@ -14,12 +14,10 @@ namespace WatchStore.Models
     
     public partial class Image
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Url { get; set; }
-        public string Product { get; set; }
+        public Nullable<int> Product { get; set; }
     
-        public virtual Image Images1 { get; set; }
-        public virtual Image Image1 { get; set; }
         public virtual Product Product1 { get; set; }
     }
 }
