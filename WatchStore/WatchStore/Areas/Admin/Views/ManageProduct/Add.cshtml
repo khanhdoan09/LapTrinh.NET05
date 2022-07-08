@@ -148,8 +148,51 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row mb-5">
+                        <div class="col-3">
+                            <div class="form-outline">
+                                <p>Avatar</p>
+                                <input required class="img-load" name="image_1" type="file" id="imgLoad_1" data-imgshow="imgShow_1" />
+                                <img id="imgShow_1"
+                                     class="avatar-product img-thumbnail"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-outline">
+                                <input required class="img-load" name="image_2" type="file" id="imgLoad_2" data-imgshow="imgShow_2" />
+                                <img id="imgShow_2"
+                                     class="avatar-product img-thumbnail"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-outline">
+                                <input required class="img-load" name="image_3" type="file" id="imgLoad_3" data-imgshow="imgShow_3" />
+                                <img id="imgShow_3"
+                                     class="avatar-product img-thumbnail"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-outline">
+                                <input required class="img-load" name="image_4" type="file" id="imgLoad_4" data-imgshow="imgShow_4" />
+                                <img id="imgShow_4"
+                                     class="avatar-product img-thumbnail"
+                                     alt="">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-outline">
+                                <input required class="img-load" name="image_5" type="file" id="imgLoad_5" data-imgshow="imgShow_5" />
+                                <img id="imgShow_5"
+                                     class="avatar-product img-thumbnail"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-outline mb-5">
-                        @Html.TextAreaFor(model => model.Description, new { @required = true, @class = "form-control", @placeholder = "Enter Create Date" })
+                        @Html.TextAreaFor(model => model.Description, new { @required = true, @class = "form-control", @placeholder = "Enter Description" })
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -181,11 +224,29 @@
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
-    
+
     <!-- co cai nay thi validation chay -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    
+    <script>
+        // load image
+        $(function () {
+            $(".img-load").each(function () {
+                $(this).change(function () {
+                    let imgShow = $(this).data("imgshow")
+                    if (this.files) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $('#' + imgShow).attr('src', e.target.result);
+                        }
+                        reader.readAsDataURL(this.files[0]);
+                    }
+                })
+            })
+        })
 
+    </script>
 </body>
 </html>

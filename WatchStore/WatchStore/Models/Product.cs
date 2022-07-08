@@ -11,10 +11,7 @@ namespace WatchStore.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using Newtonsoft.Json;
-
+    
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,52 +20,31 @@ namespace WatchStore.Models
             this.Images = new HashSet<Image>();
             this.OrderDetails = new HashSet<OrderDetail>();
         }
-
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Avatar { get; set; }
-        [Range(0, double.MaxValue, ErrorMessage = "Price number is not valid")]
-        public double Price { get; set; }
-        [Range(0, 100, ErrorMessage = "Discount number is not valid")]
-        [DisplayName("Discount")]
-        public double Discount { get; set; }
-        [Range(0, int.MaxValue, ErrorMessage = "Import number is not valid")]
-        [DisplayName("Import")]
-        public double Import { get; set; }
-        [Range(0, int.MaxValue, ErrorMessage = "Stock number is not valid")]
-        [DisplayName("Stock")]
+        public Nullable<double> Price { get; set; }
+        public Nullable<double> Discount { get; set; }
+        public Nullable<double> Import { get; set; }
         public Nullable<double> Stock { get; set; }
-        public string Brand { get; set; }
-        [DisplayName("Gender")]
+        public Nullable<int> Brand { get; set; }
         public string Gender { get; set; }
-        [DisplayName("Origin")]
         public string Origin { get; set; }
-        [DisplayName("Warranty Period")]
-        public double WarrantyPeriod { get; set; }
-        [Range(0, double.MaxValue, ErrorMessage = "Diameter number is not valid")]
-        [DisplayName("Diameter")]
+        public Nullable<double> WarrantyPeriod { get; set; }
         public string Diameter { get; set; }
-        [DisplayName("Material")]
         public string Material { get; set; }
-        [DisplayName("Strap")]
         public string Strap { get; set; }
-        [DisplayName("Wire Width")]
         public string WireWidth { get; set; }
-        [DisplayName("Apparatus")]
         public string Apparatus { get; set; }
-        [DisplayName("Waterproof")]
         public string Waterproof { get; set; }
         public string Description { get; set; }
-        [DisplayName("Create Date")]
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
-        [JsonIgnore]
-        public virtual Brand Brand1 { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
         public virtual ICollection<Image> Images { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

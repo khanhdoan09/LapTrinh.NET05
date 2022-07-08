@@ -17,7 +17,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Contact">
@@ -28,7 +28,6 @@
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="Email" Type="nvarchar" MaxLength="255" />
           <Property Name="Message" Type="nvarchar(max)" />
-          <Property Name="CustomerId" Type="int" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -42,6 +41,7 @@
           <Property Name="Address" Type="nvarchar" MaxLength="255" />
           <Property Name="FullName" Type="nvarchar" MaxLength="255" />
           <Property Name="Gender" Type="nvarchar" MaxLength="20" />
+          <Property Name="isAdmin" Type="int" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -81,7 +81,7 @@
           <Property Name="Discount" Type="float" />
           <Property Name="Import" Type="float" />
           <Property Name="Stock" Type="float" />
-          <Property Name="Brand" Type="varchar" MaxLength="10" />
+          <Property Name="Brand" Type="int" />
           <Property Name="Gender" Type="nvarchar" MaxLength="255" />
           <Property Name="Origin" Type="nvarchar" MaxLength="255" />
           <Property Name="WarrantyPeriod" Type="float" />
@@ -95,20 +95,6 @@
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
         </EntityType>
-        <Association Name="FK__Contact__Custome__0E6E26BF">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Contact">
-              <PropertyRef Name="CustomerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__OrderDeta__Order__09A971A2">
           <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
@@ -172,10 +158,6 @@
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Contact__Custome__0E6E26BF" Association="Self.FK__Contact__Custome__0E6E26BF">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="Contact" EntitySet="Contact" />
-          </AssociationSet>
           <AssociationSet Name="FK__OrderDeta__Order__09A971A2" Association="Self.FK__OrderDeta__Order__09A971A2">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
@@ -210,7 +192,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Contact">
@@ -221,8 +203,6 @@
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerId" Type="Int32" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK__Contact__Custome__0E6E26BF" FromRole="Contact" ToRole="Customer" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -236,7 +216,7 @@
           <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Contacts" Relationship="Self.FK__Contact__Custome__0E6E26BF" FromRole="Customer" ToRole="Contact" />
+          <Property Name="isAdmin" Type="Int32" />
           <NavigationProperty Name="Orders" Relationship="Self.fk_customer" FromRole="Customer" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Image">
@@ -282,7 +262,7 @@
           <Property Name="Discount" Type="Double" />
           <Property Name="Import" Type="Double" />
           <Property Name="Stock" Type="Double" />
-          <Property Name="Brand" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Brand" Type="Int32" />
           <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Origin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="WarrantyPeriod" Type="Double" />
@@ -298,20 +278,6 @@
           <NavigationProperty Name="Images" Relationship="Self.fk_product" FromRole="Product" ToRole="Image" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.fk_oder_detail_product" FromRole="Product" ToRole="OrderDetail" />
         </EntityType>
-        <Association Name="FK__Contact__Custome__0E6E26BF">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Contact">
-              <PropertyRef Name="CustomerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -375,10 +341,6 @@
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Products" EntityType="Self.Product" />
-          <AssociationSet Name="FK__Contact__Custome__0E6E26BF" Association="Self.FK__Contact__Custome__0E6E26BF">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Contact" EntitySet="Contacts" />
-          </AssociationSet>
           <AssociationSet Name="fk_customer" Association="Self.fk_customer">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Orders" EntitySet="Orders" />
@@ -426,7 +388,6 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -441,6 +402,7 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

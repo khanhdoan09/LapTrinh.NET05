@@ -29,18 +29,18 @@
                     <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                         <h3 class="lead fw-normal mb-0 me-3">Welcome to the admin page</h3>
                     </div>
-                    <form>
-
+                    <p class="text-danger">@ViewBag.Error</p>
+                    @model WatchStore.Models.Customer
+                    @using (Html.BeginForm("SubmitLogin", "Account", FormMethod.Post))
+                    {
                         <div class="form-outline mb-4 mt-4">
-                            <input type="email" class="form-in "
-                                   placeholder="Enter email address" />
-                            <span class="text-danger"></span>
+                            @Html.TextBoxFor(c => c.Email, new { @placeholder = "Enter Email" })
+                            @Html.ValidationMessageFor(c => c.Email, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="form-outline mb-4 mt-4">
-                            <input type="password" class="form-in "
-                                   placeholder="Enter password " />
-                            <span class="text-danger"></span>
+                            @Html.PasswordFor(c => c.Password, new { @placeholder = "Enter Password" })
+                            @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
                             <!-- Checkbox -->
@@ -50,15 +50,13 @@
                             </p>
                             <a href="~/Admin/User/ForgotPassword" class="text-body">Forgot Password ?</a>
                         </div>
-
                         <div class="text-center text-lg-start mt-4 pt-2">
-                            <button type="button" class="btn btn-primary"
+                            <button type="submit" class="btn btn-primary"
                                     style="padding-left: 2.5rem; padding-right: 2.5rem;">
                                 Login
                             </button>
                         </div>
-
-                    </form>
+                    }
                 </div>
             </div>
         </div>
@@ -82,5 +80,11 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- co cai nay thi validation chay -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
 </body>
 </html>

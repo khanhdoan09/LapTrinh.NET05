@@ -12,7 +12,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Contact">
@@ -23,8 +23,6 @@
     <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="CustomerId" Type="Int32" />
-    <NavigationProperty Name="Customer" Relationship="Self.FK__Contact__Custome__0E6E26BF" FromRole="Contact" ToRole="Customer" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -38,7 +36,7 @@
     <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Contacts" Relationship="Self.FK__Contact__Custome__0E6E26BF" FromRole="Customer" ToRole="Contact" />
+    <Property Name="isAdmin" Type="Int32" />
     <NavigationProperty Name="Orders" Relationship="Self.fk_customer" FromRole="Customer" ToRole="Orders" />
   </EntityType>
   <EntityType Name="Image">
@@ -84,7 +82,7 @@
     <Property Name="Discount" Type="Double" />
     <Property Name="Import" Type="Double" />
     <Property Name="Stock" Type="Double" />
-    <Property Name="Brand" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Brand" Type="Int32" />
     <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Origin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="WarrantyPeriod" Type="Double" />
@@ -100,20 +98,6 @@
     <NavigationProperty Name="Images" Relationship="Self.fk_product" FromRole="Product" ToRole="Image" />
     <NavigationProperty Name="OrderDetails" Relationship="Self.fk_oder_detail_product" FromRole="Product" ToRole="OrderDetail" />
   </EntityType>
-  <Association Name="FK__Contact__Custome__0E6E26BF">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Contact">
-        <PropertyRef Name="CustomerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_customer">
     <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -177,10 +161,6 @@
     <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
     <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="Products" EntityType="Self.Product" />
-    <AssociationSet Name="FK__Contact__Custome__0E6E26BF" Association="Self.FK__Contact__Custome__0E6E26BF">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="Contact" EntitySet="Contacts" />
-    </AssociationSet>
     <AssociationSet Name="fk_customer" Association="Self.fk_customer">
       <End Role="Customer" EntitySet="Customers" />
       <End Role="Orders" EntitySet="Orders" />

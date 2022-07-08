@@ -6,14 +6,14 @@ using System.Net.Http;
 using System.Web.Http;
 using WatchStore.Models;
 
-namespace WatchStore.Areas.Admin.Controllers.API
+namespace WatchStore.Areas.Admin.Controllers.API.Brand
 {
-    public class ManageBrandController : ApiController
+    public class GetBrandAdminController : ApiController
     {
         DbWatchShopEntities db = new DbWatchShopEntities();
-        public IHttpActionResult GetBrands()
+        public IHttpActionResult GetListBrand()
         {
-            IList<Brand> brands = db.Brands.ToList();
+            IList<Models.Brand> brands = db.Brands.ToList();
             return Ok(brands);
         }
     }

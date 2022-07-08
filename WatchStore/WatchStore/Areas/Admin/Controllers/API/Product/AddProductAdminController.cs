@@ -44,6 +44,5 @@ namespace WatchStore.Areas.Admin.Controllers.API.Product
             }
             return Ok(ProductEdit.Id);
         }
-  
     }
 }

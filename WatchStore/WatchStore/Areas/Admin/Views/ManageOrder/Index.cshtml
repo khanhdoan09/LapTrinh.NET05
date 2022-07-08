@@ -142,5 +142,32 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        // remove product
+        $(function () {
+            $(".remove-product").each(function () {
+                $(this).click(() => {
+                    let id = $(this).data("id")
+                    let idRow = $(this).data("idrow")
+                    let confirmDelete = confirm(`Are you sure wanna delete this ${id}`)
+                    if (confirmDelete) {
+                        $(`#` + idRow).remove()
+                        $.ajax({
+                            url: `/Admin/ManageProduct/DeleteProduct?id=${id}`,
+                            type: "DELETE",
+                            async: false,
+                            success: function (data) {
+                                alert(data.text)
+                                $(`#` + idRow).remove()
+                            },
+                            error: function (errormessage) {
+                                alert("error");
+                            }
+                        })
+                    }
+                });
+            });
+        })
+    </script>
 </body>
 </html>

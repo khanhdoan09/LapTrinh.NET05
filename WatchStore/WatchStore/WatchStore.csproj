@@ -194,9 +194,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Authentication\GetCheckEmailController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Authentication\GetSignInController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Authentication\PutRegisterController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Brand\DeleteBrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Brand\GetBrandAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Brand\PutAddBrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Brand\PutEditBrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\Customer\GetCustomerInAdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\API\ManageBrandController.cs" />
-    <Compile Include="Areas\Admin\Controllers\API\ManageAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\ManageProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\Order\GetOrderAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\Order\GetOrderDetailAdminController.cs" />
@@ -205,6 +210,8 @@
     <Compile Include="Areas\Admin\Controllers\API\Product\EditProductAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\Product\GetDetailProductAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\API\Product\GetListProductAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Product\SaveAvatarInAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Product\SaveImageInAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageBrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageOrderController.cs" />
@@ -249,6 +256,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Avatar.cs" />
     <Compile Include="Models\Banner.cs">
       <DependentUpon>DbWatchShop.tt</DependentUpon>
     </Compile>
@@ -1007,7 +1015,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\GetListProductAdmin\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Content\admin\img\" />
   </ItemGroup>

@@ -25,7 +25,6 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Message" ColumnName="Message" />
-          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -40,6 +39,7 @@
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
