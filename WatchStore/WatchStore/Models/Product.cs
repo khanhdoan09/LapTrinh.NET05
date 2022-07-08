@@ -21,14 +21,14 @@ namespace WatchStore.Models
             this.OrderDetails = new HashSet<OrderDetail>();
         }
     
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Avatar { get; set; }
         public Nullable<double> Price { get; set; }
         public Nullable<double> Discount { get; set; }
         public Nullable<double> Import { get; set; }
         public Nullable<double> Stock { get; set; }
-        public string Brand { get; set; }
+        public Nullable<int> Brand { get; set; }
         public string Gender { get; set; }
         public string Origin { get; set; }
         public Nullable<double> WarrantyPeriod { get; set; }
@@ -42,7 +42,6 @@ namespace WatchStore.Models
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
     
-        public virtual Brand Brand1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DbWatchShopModelStoreContainer" CdmEntityContainer="DbWatchShopEntities">
+  <EntityContainerMapping StorageEntityContainer="watch_shopModelStoreContainer" CdmEntityContainer="DbWatchShopEntities">
     <EntitySetMapping Name="Banners">
-      <EntityTypeMapping TypeName="DbWatchShopModel.Banner">
-        <MappingFragment StoreEntitySet="Banners">
+      <EntityTypeMapping TypeName="watch_shopModel.Banner">
+        <MappingFragment StoreEntitySet="Banner">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
@@ -11,16 +11,16 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Brands">
-      <EntityTypeMapping TypeName="DbWatchShopModel.Brand">
-        <MappingFragment StoreEntitySet="Brands">
+      <EntityTypeMapping TypeName="watch_shopModel.Brand">
+        <MappingFragment StoreEntitySet="Brand">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Contacts">
-      <EntityTypeMapping TypeName="DbWatchShopModel.Contact">
-        <MappingFragment StoreEntitySet="Contacts">
+      <EntityTypeMapping TypeName="watch_shopModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -29,8 +29,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Customers">
-      <EntityTypeMapping TypeName="DbWatchShopModel.Customer">
-        <MappingFragment StoreEntitySet="Customers">
+      <EntityTypeMapping TypeName="watch_shopModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Password" ColumnName="Password" />
@@ -44,8 +44,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Images">
-      <EntityTypeMapping TypeName="DbWatchShopModel.Image">
-        <MappingFragment StoreEntitySet="Images">
+      <EntityTypeMapping TypeName="watch_shopModel.Image">
+        <MappingFragment StoreEntitySet="Image">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Url" ColumnName="Url" />
           <ScalarProperty Name="Product" ColumnName="Product" />
@@ -53,9 +53,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="OrderDetails">
-      <EntityTypeMapping TypeName="DbWatchShopModel.OrderDetail">
-        <MappingFragment StoreEntitySet="OrderDetails">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+      <EntityTypeMapping TypeName="watch_shopModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetail">
           <ScalarProperty Name="Product" ColumnName="Product" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
@@ -63,7 +62,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="DbWatchShopModel.Order">
+      <EntityTypeMapping TypeName="watch_shopModel.Order">
         <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Status" ColumnName="Status" />
@@ -74,8 +73,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="DbWatchShopModel.Product">
-        <MappingFragment StoreEntitySet="Products">
+      <EntityTypeMapping TypeName="watch_shopModel.Product">
+        <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Avatar" ColumnName="Avatar" />

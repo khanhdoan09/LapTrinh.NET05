@@ -26,53 +26,108 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
-    <!--start modal product add-->
-    <div class="container-fluid py-3">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">View Order</h5>
+    <div class="header container-fluid py-3">
+        <div class=" d-flex justify-content-between">
+            <div class="">
+                <img src="https://htmldemo.net/ruiz/ruiz/assets/images/logo/logo.png" alt="">
             </div>
-            <div class="modal-body ">
-                <form>
-                    <div class="row mb-5">
-                        <div class="col-3">
-                            <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Order ID" readonly />
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Customer ID" readonly />
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-outline">
-                                <input type="date" class="form-control" readonly />
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-outline">
-                                <input type="text" class="form-control" placeholder="Enter Status Order" readonly />
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="form-outline mb-5">
-                        <textarea type="text" class="form-control" rows="16" readonly>
-                            Load tất cả thông tin order + order detail vào đây
-                        </textarea>
-                    </div>
-
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
+            <div>
+                <span class="lead abc">
+                    Hello Lê Minh Chánh
+                </span>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC6iPDSqcgCcAtdEz_rPY0B-sxqMd7hz0Hlg&usqp=CAU"
+                     class="avatar-admin" alt="">
+                <button class=" btn-out">
+                    Log Out
+                </button>
             </div>
         </div>
     </div>
+    <!--start modal product add-->
+    <section class="py-3 header">
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-xxl-2 col-xl-12 col-lg-12 col-md-12">
+                    <!-- Tabs nav -->
+                    <div class="nav flex-column nav-pills nav-pills-custom" id="v-pills-tab" role="tablist"
+                         aria-orientation="vertical">
+                        <a class="nav-link mb-3 p-3 shadow active" id="v-pills-product-tab" data-toggle="pill"
+                           href="#v-pills-product" role="tab" aria-controls="v-pills-product" aria-selected="true">
+                            <i class="fa-solid fa-box-archive"></i>
+                            <span class="font-weight-bold small text-uppercase fw-bold">My Product</span>
+                        </a>
+
+                        <a class="nav-link mb-3 p-3 shadow" id="v-pills-customer-tab" data-toggle="pill"
+                           href="#v-pills-customer" role="tab" aria-controls="v-pills-customer" aria-selected="false">
+                            <i class="fa-solid fa-users"></i>
+                            <span class="font-weight-bold small text-uppercase fw-bold">Customer</span>
+                        </a>
+
+                        <a class="nav-link mb-3 p-3 shadow" id="v-pills-brand-tab" data-toggle="pill"
+                           href="#v-pills-brand" role="tab" aria-controls="v-pills-brand" aria-selected="false">
+                            <i class="fa-solid fa-copyright"></i>
+                            <span class="font-weight-bold small text-uppercase fw-bold">Brand</span>
+                        </a>
+
+                        <a class="nav-link mb-3 p-3 shadow" id="v-pills-settings-tab" data-toggle="pill"
+                           href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                            <i class="fa-solid fa-boxes-packing"></i>
+                            <span class="font-weight-bold small text-uppercase fw-bold">My Order</span>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="col-xxl-10 col-xl-12 col-lg-12 col-md-12">
+                    <!-- Tabs content -->
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-product"
+                             role="tabpanel"
+                             aria-labelledby="v-pills-product-tab">
+                            <h4 class="font-italic mb-4">My Order</h4>
+                            <table id="dataorder" class="table table-striped" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID Product</th>
+                                        <th>Image</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @model IEnumerable<WatchStore.Models.OrderDetail>
+
+                                    @foreach (var Item in Model)
+                                    {
+                                    <tr>
+                                        <td>@Item.Product1.Id</td>
+                                        <td class="d-none d-xl-block d-xxl-block">
+                                            <img src="/Content/img/product/@Item.Product1.Avatar"
+                                                 class="img-thumbnail avatar-product"
+                                                 alt="Hollywood Sign on The Hill" />
+                                        </td>
+                                        <td>@Item.Product1.Price</td>
+                                        <td>@Item.Quantity</td>
+                                        @{ double total = Item.Quantity * Item.Product1.Price;}
+                                        <td>@total</td>
+                                        <td>
+                                            <button class="btns btns-view" data-bs-toggle="modal"
+                                                    data-bs-target="#staticBackdrop10">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!--end modal product add-->
     <!--end main-->

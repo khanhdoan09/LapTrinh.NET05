@@ -18,8 +18,6 @@ namespace WatchStore.Models
         public DbWatchShopEntities()
             : base("name=DbWatchShopEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
-            this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
